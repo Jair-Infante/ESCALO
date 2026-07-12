@@ -1,0 +1,10 @@
+# Secretos — nunca commitear
+.mcp.json
+**/.mcp.json
+.env
+.env.*
+*.env
+
+# Config local de Claude Code (permisos por máquina)
+.claude/settings.local.json
+**/.claude/settings.local.json

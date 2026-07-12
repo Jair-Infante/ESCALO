@@ -1,0 +1,35 @@
+# === Secretos — nunca commitear ===
+.env
+.env.*
+*.env
+*.key
+*.pem
+*_secret*
+*secret*.json
+credentials*.json
+**/credentials*.json
+.mcp.json
+**/.mcp.json
+
+# === Config local (permisos/paths por máquina) ===
+.claude/settings.local.json
+**/.claude/settings.local.json
+
+# === Dependencias / build ===
+node_modules/
+**/node_modules/
+dist/
+build/
+.next/
+__pycache__/
+*.pyc
+
+# === Sistema / editor ===
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# === Backup del historial git anterior (ver nota en README) ===
+.git.bak/
