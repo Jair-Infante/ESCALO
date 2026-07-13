@@ -35,6 +35,13 @@
 - Reconfigurar: `POST /webhook/set/escalo` con `{"webhook":{"enabled":true,"url":"...","events":["MESSAGES_UPSERT"]}}`.
 - Nota: el webhook de n8n responde al terminar el pipeline (~10-20s, modo `responseNode`) — es normal, Evolution no depende de la respuesta.
 
+## Filtro de grupos (Evolution)
+
+- La instancia `escalo` está configurada con `groupsIgnore: true` (2026-07-13): Evolution **no emite** mensajes de grupo, así que n8n nunca los recibe. Es el corte de raíz para que la IA ni lea grupos.
+- Verificar: `curl https://evo.escalo.com.ar/settings/find/escalo -H "apikey: $EVO_API_KEY"` → `"groupsIgnore":true`.
+- Revertir (volver a recibir grupos): `POST /settings/set/escalo` con el mismo body pero `"groupsIgnore":false`.
+- Defensa en profundidad: aunque un grupo se filtre igual, el nodo `WA → normalizado` lo clasifica `descartar/grupo` y corta antes de la IA.
+
 ## Backups
 
 - Workflows: exportar a `n8n/exports/` + commit en cada sesión productiva.
